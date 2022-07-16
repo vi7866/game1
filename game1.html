@@ -1,0 +1,109 @@
+<script>
+y=document.documentElement.clientHeight;
+x=document.documentElement.clientWidth;
+
+function height(){ 
+
+document.getElementById("h1").style.height =.08 * y + "px";
+document.getElementById("h1").style.width = x-10 + "px";
+document.getElementById('h1').style.fontSize = .07 * y + "px";
+
+document.getElementById("d1").style.height = .795 * y -20 +"px";
+document.getElementById("d1").style.width = .99*x-20 + "px";
+} 
+stop=0;
+
+function game(){
+i=Math.floor(Math.random() * 4);
+z=Math.floor(Math.random() * (.88*x));
+w=Math.floor(Math.random() * (.6*y));
+
+var c=document.getElementById("d4").innerHTML;
+d=parseInt(c)-1;
+document.getElementById("d4").innerHTML=d;
+
+h=document.getElementById("i1");
+if(1){
+h.style.top=w+"px";
+h.style.left=z+"px";
+}
+h.src="star"+ i +".png";
+if(d>=1){
+setTimeout(game,1100);
+}
+else{
+clearTimeout(game);
+}
+}
+
+function score(){
+var b=document.getElementById("d3").innerHTML;
+var a=parseInt(b)+i+1;
+document.getElementById("d3").innerHTML=a;
+}
+</script>
+
+
+<style>
+
+#h1{
+display: block;
+//font-size:150%;
+background: pink;
+text-align:center;
+border:5px solid green;
+position:absolute;
+top:0%;
+left:0%;
+bottom:.5%;
+vertical-align: middle;
+padding-top:.1%;
+padding-bottom: .09%;
+}
+
+#d1{
+//height:80%;
+//width:95%;
+position:absolute;
+top:21%;
+left:.6%;
+right:.6%;
+bottom:.6%;
+border:12px groove blue;
+background:#FFFFFF;//white
+
+}
+#d2{
+position:absolute;
+right:5%;
+top:25%;
+}
+
+#d5{
+position:absolute;
+right:3%;
+top:8%;
+border:3px solid blue;
+border-radius:5px;
+background:red;
+}
+
+#i1{
+position:absolute;
+top:10%;
+left:30%;
+height:60%;
+width:11%;
+}
+
+</style>
+<body onload="height()" style= "background:grey;" >
+<h1 id="h1"> welcome to  star game!</h1>
+
+<div id="d1" ><img id="i1" src="star0.png" onclick="score()" ></div>
+<div id="d2" style="color:blue">score:
+				      <div id="d3" style="color: black;">0</div>
+                                 Time(sec):<div id="d4" style="color: red;">60</div>
+</div>
+<div id="d5" onclick="game()" ><i><b>START</b></i></div>
+</body>
